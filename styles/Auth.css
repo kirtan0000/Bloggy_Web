@@ -1,0 +1,30 @@
+.top-text-auth {
+  text-align: center;
+  padding-top: 60px;
+  font-weight: 330;
+}
+
+.desc-text-auth {
+  text-align: center;
+  margin-left: 80px;
+  font-weight: 200;
+}
+
+.user-input {
+  margin-top: -10px;
+}
+
+.error-auth-text {
+  color: rgb(255, 4, 4);
+}
+
+.btn-green-outline {
+  border-color: #04aa6d;
+  color: green;
+}
+
+.btn-green-outline:hover {
+  border-color: #00ffa2;
+  color: white;
+  background-color: #009c63;
+}
