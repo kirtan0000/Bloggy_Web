@@ -1,5 +1,3 @@
-/* eslint-disable @next/next/no-css-tags */
-/* eslint-disable @next/next/no-sync-scripts */
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'

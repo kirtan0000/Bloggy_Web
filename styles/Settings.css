@@ -1,0 +1,25 @@
+.input-settings {
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  border: 1px solid #2d9fd9;
+  width: 250px;
+  height: 30px;
+  padding-left: 10px;
+}
+
+.input-settings:focus {
+  outline: none;
+  border: 1px solid #a0d18c;
+}
+
+.submit-btn {
+  position: relative;
+  left: 20px;
+  transition: background-color 0.5s ease-in-out;
+}
+
+.submit-btn:hover {
+  border: 1px solid rgb(255, 204, 204);
+  background-color: rgb(219, 216, 216);
+}

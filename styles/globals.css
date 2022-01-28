@@ -14,3 +14,9 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.center {
+  margin: 0 auto;
+  text-align: center;
+  font-family: Monospace;
+}
