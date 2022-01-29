@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import Image from 'next/image'
 import React, { useState, useEffect } from 'react'
 import Router from 'next/router'
 import { Post } from '../fetchWrapper'
@@ -6,10 +7,15 @@ import UserVerifyChecks from '../util/UserVerifyChecks'
 
 export default function Settings () {
   const [username, setUsername] = useState('')
+  const [pfpUrl, setPfpUrl] = useState('')
 
   useEffect(() => {
-    UserVerifyChecks()
-  }, [])
+    async function getUserData () {
+      const data = await UserVerifyChecks()
+      setPfpUrl(data.user_pfp)
+    }
+    getUserData()
+  })
 
   const doPromptUsernameChange = () => {
     const email = prompt('Please enter your email')
@@ -79,17 +85,36 @@ export default function Settings () {
         <hr className='topnav-hr' />
       </div>
       <div className='center' style={{ marginTop: 50, fontSize: 20 }}>
-        <h2>Change User Name</h2>
-        <input
-          type='text'
-          className='input-settings'
-          onChange={e => setUsername(e.target.value)}
-          value={username}
-          placeholder='username123'
-        />
-        <button onClick={changeUsername} className='btn submit-btn'>
-          Change
-        </button>
+        <div className='pfp-div'>
+          <h2>Change Profile Picture</h2>
+          <img
+            src={pfpUrl}
+            alt='Your Profile Picture'
+            id='change-pfp-img'
+            width={100}
+            height={100}
+          />
+          <button className='btn' id='submit-photo-change'>
+            Change Photo
+          </button>
+        </div>
+        <div className='change-username-div'>
+          <h2>Change User Name</h2>
+          <input
+            type='text'
+            id='input-settings'
+            onChange={e => setUsername(e.target.value)}
+            value={username}
+            placeholder='username123'
+          />
+          <button
+            onClick={changeUsername}
+            id='change-username-btn'
+            className='btn'
+          >
+            Change
+          </button>
+        </div>
       </div>
     </>
   )

@@ -1,4 +1,4 @@
-.input-settings {
+#input-settings {
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
   border-radius: 10px;
@@ -6,6 +6,7 @@
   width: 250px;
   height: 30px;
   padding-left: 10px;
+  position: relative;
 }
 
 .input-settings:focus {
@@ -13,13 +14,46 @@
   border: 1px solid #a0d18c;
 }
 
-.submit-btn {
+#change-username-btn {
   position: relative;
-  left: 20px;
+  left: 15px;
   transition: background-color 0.5s ease-in-out;
 }
 
-.submit-btn:hover {
+#change-username-btn:hover {
   border: 1px solid rgb(255, 204, 204);
   background-color: rgb(219, 216, 216);
+}
+
+#change-pfp-img {
+  position: relative;
+  right: 20px;
+}
+
+#submit-photo-change {
+  position: relative;
+  margin-right: 50px;
+  bottom: 40px;
+}
+
+@media only screen and (max-width: 355px) {
+  #change-pfp-img {
+    right: 7px;
+    bottom: 20px;
+  }
+
+  #submit-photo-change {
+    top: -10px;
+    left: 20px;
+  }
+
+  #input-settings {
+    width: 80%;
+    bottom: 15px;
+  }
+
+  #change-username-btn {
+    left: 0px;
+    transition: background-color 0.5s ease-in-out;
+  }
 }

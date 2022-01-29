@@ -30,6 +30,12 @@ async function UserVerifyChecks () {
     Router.push('./create-account')
     return
   }
+
+  if (UserData.needs_new_jwt == true) {
+    localStorage.setItem('jwt_token', UserData.jwt_token)
+  }
+
+  return UserData
 }
 
 export default UserVerifyChecks

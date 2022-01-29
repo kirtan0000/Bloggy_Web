@@ -16,7 +16,13 @@ a {
 }
 
 .center {
+  /* A centered div */
   margin: 0 auto;
   text-align: center;
   font-family: Monospace;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  resize: 'horizontal';
 }

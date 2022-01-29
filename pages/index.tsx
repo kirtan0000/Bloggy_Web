@@ -4,11 +4,13 @@ import Router from 'next/router'
 import { Post } from '../fetchWrapper'
 import UserVerifyChecks from '../util/UserVerifyChecks'
 
-
 export default function Home () {
   useEffect(() => {
-    UserVerifyChecks()
-  }, [])
+    async function getUserData () {
+      const data = await UserVerifyChecks()
+    }
+    getUserData()
+  })
 
   return (
     <>
