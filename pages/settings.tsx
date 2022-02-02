@@ -72,6 +72,9 @@ export default function Settings () {
 
   // Make a request to change the users profile picture
   const uploadNewPfp = async (event: any) => {
+    const jwt_token = localStorage.getItem('jwt_token')
+    const refresh_token = localStorage.getItem('refresh_token')
+
     const file = event?.target?.files[0]
 
     const fileName = file?.name
@@ -85,13 +88,28 @@ export default function Settings () {
       fileExtension !== 'jpeg'
     ) {
       alert('Please select a valid image file (png, jpg, and jpeg only).')
+      event.target.value = null
       return
     }
     const post_form = await FormPost('upload-pfp', 'pfp', file)
     if (!post_form.success) {
       alert(post_form.message)
+      event.target.value = null
       return
     }
+
+    const image_id = post_form.id
+    const change_data = await Post(
+      'change-pfp',
+      new URLSearchParams({ image_id, jwt_token, refresh_token })
+    )
+
+    if (change_data.needs_new_jwt === true)
+      localStorage.setItem('jwt_token', change_data.jwt_token)
+
+    setPfpUrl(change_data.url)
+
+    event.target.value = null
   }
 
   return (
