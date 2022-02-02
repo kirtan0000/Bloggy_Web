@@ -28,3 +28,21 @@
   color: white;
   background-color: #009c63;
 }
+
+.box {
+  border: none;
+  border-width: 0;
+}
+
+@media only screen and (max-height: 650px) {
+  .box {
+    position: relative;
+    bottom: 80px;
+  }
+}
+
+@media only screen and (max-width: 270px) {
+  .user-input {
+    font-size: 70%;
+  }
+}
