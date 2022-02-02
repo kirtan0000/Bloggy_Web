@@ -17,7 +17,7 @@ export default function Settings () {
       setPfpUrl(data.user_pfp)
     }
     getUserData()
-  })
+  }, [])
 
   const doPromptUsernameChange = () => {
     const email = prompt('Please enter your email')

@@ -11,7 +11,7 @@ export default function Home () {
       const data = await UserVerifyChecks()
     }
     getUserData()
-  })
+  }, [])
 
   return (
     <>

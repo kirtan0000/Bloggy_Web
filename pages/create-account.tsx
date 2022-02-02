@@ -21,7 +21,7 @@ export default function CreateAccount () {
       localStorage.getItem('refresh_token')
     )
       Router.push('..')
-  })
+  }, [])
 
   const clearInputs = () => {
     setUsername('')

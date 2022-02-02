@@ -17,7 +17,7 @@ export default function Login () {
       localStorage.getItem('refresh_token')
     )
       Router.push('..')
-  })
+  }, [])
 
   const doLogin = async () => {
     if (!email || !password) {
