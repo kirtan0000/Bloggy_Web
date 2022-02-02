@@ -107,7 +107,7 @@ export default function Settings () {
         />
         <script src='https://cdn.jsdelivr.net/npm/@fire-ui/fire-ui@0.2.7/FireUI.min.js' />
       </Head>
-      <div className='topnav-body'>
+      <div className='topnav-body topnav-shadow'>
         <div className='topnav'>
           <span className='topnav-brand'>Settings</span>
           <span className='topnav-hamburger-menu' data-target='bloggy-settings'>
