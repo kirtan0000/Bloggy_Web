@@ -27,7 +27,7 @@
   background-color: rgb(219, 216, 216);
 }
 
-#change-username-btn {
+#change-username-btn, #change-password-btn {
   position: relative;
   left: 15px;
 }

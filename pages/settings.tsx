@@ -9,6 +9,7 @@ import UserVerifyChecks from '../util/UserVerifyChecks'
 
 export default function Settings () {
   const [username, setUsername] = useState('')
+  const [password1, setPassword1] = useState('')
   const [pfpUrl, setPfpUrl] = useState('')
 
   useEffect(() => {
@@ -19,7 +20,7 @@ export default function Settings () {
     getUserData()
   }, [])
 
-  const doPromptUsernameChange = () => {
+  const doPromptChange = () => {
     const email = prompt('Please enter your email')
     const password = prompt('Please enter your PASSWORD')
     if (email && password) {
@@ -36,7 +37,7 @@ export default function Settings () {
       return
     }
 
-    const promptInfo = doPromptUsernameChange() // Make the prompt
+    const promptInfo = doPromptChange() // Make the prompt
 
     // If the user didn't input any data, run this function over and over until they do
     if (promptInfo[0] === null || promptInfo[1] === null) {
@@ -62,6 +63,40 @@ export default function Settings () {
     setUsername('')
     alert(
       `Successfully changed username to '${username}'. (You must now wait 1 week to change it again)`
+    )
+  }
+
+  // Change the user's password
+  const changePassword = async () => {
+    if (!password1) {
+      alert('Please enter a new password.')
+      return
+    }
+    const promptInfo = doPromptChange() // Make the prompt
+
+    // If the user didn't input any data, run this function over and over until they do
+    if (promptInfo[0] === null || promptInfo[1] === null) {
+      alert('Please enter an email and password.')
+      changePassword()
+      return
+    }
+
+    const email = promptInfo[0]
+    const password = promptInfo[1]
+
+    const change_password = await Post(
+      'change-user-password',
+      new URLSearchParams({ email, password, new_password: password1 })
+    )
+
+    if (!change_password.success) {
+      alert(change_password.message)
+      setPassword1('')
+      return
+    }
+    setPassword1('')
+    alert(
+      `Successfully changed password!`
     )
   }
 
@@ -173,6 +208,23 @@ export default function Settings () {
           <button
             onClick={changeUsername}
             id='change-username-btn'
+            className='btn hover-button-pink'
+          >
+            Change
+          </button>
+        </div>
+        <div className='change-password-div'>
+          <h2>Change Password</h2>
+          <input
+            type='password'
+            id='input-settings'
+            onChange={e => setPassword1(e.target.value)}
+            value={password1}
+            placeholder='SecurePassword123'
+          />
+          <button
+            onClick={changePassword}
+            id='change-password-btn'
             className='btn hover-button-pink'
           >
             Change
